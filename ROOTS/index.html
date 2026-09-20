@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ta-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ROOTS — GHSS Dhalavaipettai · Batch 2006–07</title>
+  <meta name="description" content="Same Roots. Forever Connected. The digital batch book for SSLC Batch 2006–07, Government Higher Secondary School, Dhalavaipettai.">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0B1020">
+  <meta name="color-scheme" content="dark">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="ROOTS">
+  <link rel="apple-touch-icon" href="/assets/logo/icon-192.png">
+
+  <link rel="icon" type="image/svg+xml" href="/assets/logo/logo.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600&display=swap">
+
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+</head>
+<body class="page page--landing">
+
+  <section class="hero" aria-label="School entrance">
+
+    <div class="hero__bg" role="img"
+         aria-label="Entrance of Government Higher Secondary School, Dhalavaipettai">
+      <div class="hero__lights" aria-hidden="true">
+        <span class="hero__light hero__light--a"></span>
+        <span class="hero__light hero__light--b"></span>
+        <span class="hero__light hero__light--c"></span>
+      </div>
+      <div class="hero__veil" aria-hidden="true"></div>
+      <div class="hero__grain" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero__content">
+      <img class="hero__logo anim-logo"
+           src="/assets/logo/logo.svg"
+           alt="" width="128" height="128" fetchpriority="high">
+
+      <h1 class="hero__title anim-text" style="--d: 0.35s">
+        <span class="roots-word">
+          R<span class="roots-o" aria-hidden="true">
+            <svg viewBox="0 0 100 100" class="roots-o__ring">
+              <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="7"/>
+              <circle cx="50" cy="50" r="26" fill="none" stroke="currentColor" stroke-width="3" opacity="0.55"/>
+              <circle cx="50" cy="50" r="14" fill="none" stroke="currentColor" stroke-width="2" opacity="0.30"/>
+            </svg>
+            <span class="sr-only">O</span>
+          </span>OTS
+        </span>
+      </h1>
+
+      <p class="hero__school anim-text" lang="ta" style="--d: 0.50s">
+        அரசு உயர்நிலைப் பள்ளி, தளவாய்ப்பேட்டை
+      </p>
+      <p class="hero__school-en anim-text" style="--d: 0.58s">
+        Government Higher Secondary School · Dhalavaipettai
+      </p>
+
+      <p class="hero__batch anim-text" style="--d: 0.66s">
+        SSLC Batch 2006–07
+      </p>
+
+      <p class="hero__tagline anim-text" style="--d: 0.74s">
+        Same Roots <span class="dot" aria-hidden="true">•</span> Forever Connected
+      </p>
+    </div>
+  </section>
+
+  <section class="welcome anim-card" aria-label="Welcome">
+    <div class="glass welcome__card">
+
+      <div class="welcome__handle" aria-hidden="true"></div>
+
+      <p class="welcome__eyebrow">Welcome home</p>
+      <h2 class="welcome__heading">
+        Reconnect with the faces<br>you grew up with.
+      </h2>
+      <p class="welcome__sub">
+        Nearly two decades on, we're still one batch.
+        Find your classmates, share your journey, keep the roots alive.
+      </p>
+
+      <div class="welcome__actions">
+        <button class="btn btn--primary" type="button" data-open-sheet="join">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Join ROOTS
+        </button>
+
+        <a class="btn btn--ghost" href="/directory.html">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="17" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M3.5 19c.6-3.2 3-5 5.5-5s4.9 1.8 5.5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M15.5 14.4c2.1.2 3.9 1.6 4.6 4.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          ROOTS Directory
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" aria-label="What ROOTS offers">
+    <article class="glass feature">
+      <span class="feature__glyph feature__glyph--blue">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M8 12a3.4 3.4 0 1 0 0-6.8A3.4 3.4 0 0 0 8 12Z" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M16 13.2a2.8 2.8 0 1 0 0-5.6" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M2.6 19.4c.5-2.9 2.7-4.6 5.4-4.6s4.9 1.7 5.4 4.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          <path d="M14.4 14.6c2.2 0 4 1.5 4.6 3.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <h3 class="feature__title">Reconnect</h3>
+      <p class="feature__desc">Find every classmate by name, profession, city, or the class they sat in.</p>
+    </article>
+
+    <article class="glass feature">
+      <span class="feature__glyph feature__glyph--gold">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 6h5M4 12h11M4 18h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="18" cy="6" r="2" stroke="currentColor" stroke-width="1.7"/>
+          <circle cx="17" cy="12" r="2" stroke="currentColor" stroke-width="1.7"/>
+          <circle cx="15" cy="18" r="2" stroke="currentColor" stroke-width="1.7"/>
+        </svg>
+      </span>
+      <h3 class="feature__title">Our Journey</h3>
+      <p class="feature__desc">Class 6 to Class 12 — the years, the sections, the groups. All in one timeline.</p>
+    </article>
+
+    <article class="glass feature">
+      <span class="feature__glyph feature__glyph--emerald">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="3" y="5" width="8.5" height="14" rx="2.4" stroke="currentColor" stroke-width="1.7"/>
+          <rect x="12.5" y="5" width="8.5" height="14" rx="2.4" stroke="currentColor" stroke-width="1.7"/>
+          <path d="M11.5 12h1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <h3 class="feature__title">Then &amp; Now</h3>
+      <p class="feature__desc">A school-time photo, a current one. Watch a face you knew by heart come back.</p>
+    </article>
+
+    <article class="glass feature">
+      <span class="feature__glyph feature__glyph--indigo">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 20s-7-4.4-7-9.4A4 4 0 0 1 12 7.6 4 4 0 0 1 19 10.6c0 5-7 9.4-7 9.4Z"
+                stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <h3 class="feature__title">Forever '07</h3>
+      <p class="feature__desc">Birthdays, memories, reunions. The batch that stays connected, long after school.</p>
+    </article>
+  </section>
+
+  <footer class="footer">
+    <p class="footer__quote">"Once a classmate. Always a friend."</p>
+    <p class="footer__meta">
+      GHSS Dhalavaipettai · SSLC 2006–07
+    </p>
+  </footer>
+
+  <nav class="dock" aria-label="Primary">
+    <a class="dock__item is-active" href="/index.html" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19v-8.5Z"
+              stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <span>Home</span>
+    </a>
+
+    <a class="dock__item" href="/directory.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M3.5 19c.6-3.2 3-5 5.5-5s4.9 1.8 5.5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M15.6 5.2a3 3 0 0 1 0 5.6M17 14.4c2 .4 3.4 1.8 4 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span>Directory</span>
+    </a>
+
+    <button class="dock__item dock__item--cta" type="button" data-open-sheet="join">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span>Join</span>
+    </button>
+
+    <a class="dock__item" href="/memories.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3.5" y="5" width="17" height="14" rx="3" stroke="currentColor" stroke-width="1.8"/>
+        <circle cx="9" cy="10" r="1.6" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m5 18 5-4.5 3.5 3L17 13l2 2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <span>Memories</span>
+    </a>
+
+    <a class="dock__item" href="/profile.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="8.5" r="3.6" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M5 19.5c.7-3.7 3.5-5.8 7-5.8s6.3 2.1 7 5.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <div class="sheet-scrim" data-sheet-scrim hidden></div>
+
+  <aside class="sheet" id="sheet-join" role="dialog" aria-modal="true"
+         aria-labelledby="sheet-join-title" hidden>
+    <div class="glass sheet__panel">
+      <div class="sheet__handle" aria-hidden="true"></div>
+
+      <h2 class="sheet__title" id="sheet-join-title">Join ROOTS</h2>
+      <p class="sheet__sub">
+        This space is only for our batch. Enter the invite code shared in our group.
+      </p>
+
+      <form class="sheet__form" id="joinForm" novalidate>
+        <label class="field">
+          <span class="field__label">Invite code</span>
+          <input class="field__input" type="text" name="invite" id="inviteInput"
+                 inputmode="text" autocomplete="off" autocapitalize="characters"
+                 spellcheck="false" placeholder="ROOTS2007" required>
+          <span class="field__error" id="inviteError" role="alert" hidden></span>
+        </label>
+
+        <button class="btn btn--primary btn--block" type="submit" id="inviteSubmit">
+          Continue
+        </button>
+      </form>
+
+      <p class="sheet__foot">
+        Not sure of the code? Ask in the batch WhatsApp group.
+      </p>
+    </div>
+  </aside>
+
+  <script src="/js/supabase.js" defer></script>
+  <script src="/js/app.js" defer></script>
+
+  <script>
+    // ---------------------------------------------------------------
+    // Landing-page specifics. Sheet open/close and SW registration
+    // live in /js/app.js.
+    // ---------------------------------------------------------------
+    (function () {
+      const form = document.getElementById('joinForm');
+      const input = document.getElementById('inviteInput');
+      const errorEl = document.getElementById('inviteError');
+      const submit = document.getElementById('inviteSubmit');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorEl.hidden = true;
+        const code = input.value.trim();
+        if (!code) {
+          errorEl.textContent = 'Please enter the invite code.';
+          errorEl.hidden = false;
+          return;
+        }
+
+        submit.disabled = true;
+        submit.textContent = 'Checking…';
+
+        try {
+          const ok = await window.ROOTS?.verifyInvite?.(code);
+          if (ok) {
+            sessionStorage.setItem('roots.invite', code.toUpperCase());
+            window.location.href = '/onboard.html';
+          } else {
+            errorEl.textContent = 'That code doesn\u2019t match. Check with the group.';
+            errorEl.hidden = false;
+            input.select();
+          }
+        } catch (err) {
+          errorEl.textContent = 'Network hiccup. Try again in a moment.';
+          errorEl.hidden = false;
+        } finally {
+          submit.disabled = false;
+          submit.textContent = 'Continue';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

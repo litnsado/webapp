@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ta-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Directory — ROOTS</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0B1020">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="icon" type="image/svg+xml" href="/assets/logo/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+</head>
+<body class="page page--directory">
+
+  <header class="page__head">
+    <div class="page__head-row">
+      <div>
+        <h1 class="page__title">Directory</h1>
+        <p class="page__meta" id="count">Loading…</p>
+      </div>
+      <button class="icon-btn" type="button" id="refreshBtn" aria-label="Refresh">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20 12a8 8 0 1 1-2.4-5.7M20 4v4h-4" stroke="currentColor"
+                stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="search">
+      <svg class="search__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.9"/>
+        <path d="m16 16 4 4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+      </svg>
+      <input class="search__input" type="search" id="searchInput"
+             placeholder="Search by name, profession, city…"
+             autocomplete="off" enterkeyhint="search">
+      <button class="search__clear" type="button" id="searchClear" aria-label="Clear" hidden>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="m7 7 10 10M17 7 7 17" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="chip-row chip-row--scroll" id="filters" aria-label="Filters">
+      <button class="chip is-on" data-filter="all" type="button">All</button>
+      <button class="chip" data-filter="birthday" type="button">Birthdays</button>
+      <span class="chip-row__sep" aria-hidden="true"></span>
+      <button class="chip" data-filter="c6"  type="button">Class 6</button>
+      <button class="chip" data-filter="c7"  type="button">Class 7</button>
+      <button class="chip" data-filter="c8"  type="button">Class 8</button>
+      <button class="chip" data-filter="c9"  type="button">Class 9</button>
+      <button class="chip" data-filter="c10" type="button">Class 10</button>
+      <button class="chip" data-filter="c11" type="button">Class 11</button>
+      <button class="chip" data-filter="c12" type="button">Class 12</button>
+      <span class="chip-row__sep" aria-hidden="true"></span>
+      <button class="chip" data-filter="secA" type="button">Section A</button>
+      <button class="chip" data-filter="secB" type="button">Section B</button>
+      <button class="chip" data-filter="secC" type="button">Section C</button>
+      <button class="chip" data-filter="secD" type="button">Section D</button>
+    </div>
+  </header>
+
+  <section class="birthdays glass" id="birthdays" hidden aria-label="Upcoming birthdays">
+    <h2 class="birthdays__title">Coming up</h2>
+    <div class="birthdays__strip" id="birthdaysStrip"></div>
+  </section>
+
+  <main class="dir">
+    <div class="dir__grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m16 16 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <p id="emptyMsg">No classmates match that search.</p>
+    </div>
+    <div class="skeleton-grid" id="skeleton">
+      <div class="skeleton-card"></div><div class="skeleton-card"></div>
+      <div class="skeleton-card"></div><div class="skeleton-card"></div>
+    </div>
+  </main>
+
+  <nav class="dock" aria-label="Primary">
+    <a class="dock__item" href="/index.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19v-8.5Z"
+              stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <span>Home</span>
+    </a>
+    <a class="dock__item is-active" href="/directory.html" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M3.5 19c.6-3.2 3-5 5.5-5s4.9 1.8 5.5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M15.6 5.2a3 3 0 0 1 0 5.6M17 14.4c2 .4 3.4 1.8 4 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span>Directory</span>
+    </a>
+    <a class="dock__item dock__item--cta" href="/onboard.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span>Join</span>
+    </a>
+    <a class="dock__item" href="/memories.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3.5" y="5" width="17" height="14" rx="3" stroke="currentColor" stroke-width="1.8"/>
+        <circle cx="9" cy="10" r="1.6" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m5 18 5-4.5 3.5 3L17 13l2 2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <span>Memories</span>
+    </a>
+    <a class="dock__item" href="/profile.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="8.5" r="3.6" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M5 19.5c.7-3.7 3.5-5.8 7-5.8s6.3 2.1 7 5.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <script src="/js/supabase.js" defer></script>
+  <script src="/js/app.js" defer></script>
+  <script src="/js/directory.js" defer></script>
+</body>
+</html>

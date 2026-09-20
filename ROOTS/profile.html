@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ta-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ROOT Card — ROOTS</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0B1020">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="icon" type="image/svg+xml" href="/assets/logo/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+</head>
+<body class="page page--profile">
+
+  <header class="profile__head">
+    <a class="onboard__back" href="/directory.html" aria-label="Back to directory">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <button class="icon-btn" type="button" id="shareBtn" aria-label="Share">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 16V4m0 0-4 4m4-4 4 4" stroke="currentColor"
+              stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M5 14v5a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19v-5"
+              stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+
+  <main class="profile" id="profile" hidden>
+
+    <section class="tn" id="tn" aria-label="Then and now">
+      <div class="tn__stage">
+        <div class="tn__frame tn__frame--then" id="frameThen">
+          <img id="imgSchool" alt="" decoding="async">
+          <span class="tn__tag">Then</span>
+        </div>
+        <div class="tn__frame tn__frame--now" id="frameNow">
+          <img id="imgCurrent" alt="" decoding="async">
+          <span class="tn__tag">Now</span>
+        </div>
+      </div>
+      <button class="tn__toggle" type="button" id="tnToggle" aria-label="Switch photo">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 9a8 8 0 0 1 13.6-3.6L20 8M20 15a8 8 0 0 1-13.6 3.6L4 16"
+                stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 4v4h-4M4 20v-4h4" stroke="currentColor"
+                stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </section>
+
+    <section class="who">
+      <h1 class="who__name" id="name"></h1>
+      <p class="who__nick" id="nick" hidden></p>
+
+      <div class="root" id="root" aria-hidden="true">
+        <svg viewBox="0 0 260 54" preserveAspectRatio="xMidYMid meet">
+          <g fill="none" stroke="url(#rootGold)" stroke-linecap="round" id="rootPaths">
+            <path class="root__p" d="M130 4 v16"/>
+            <path class="root__p" d="M130 20 c-12 3-22 10-30 22"/>
+            <path class="root__p" d="M130 20 c12 3 22 10 30 22"/>
+            <path class="root__p" d="M130 26 c-22 2-38 12-50 26"/>
+            <path class="root__p" d="M130 26 c22 2 38 12 50 26"/>
+            <path class="root__p" d="M130 32 c-34 0-58 10-74 22"/>
+            <path class="root__p" d="M130 32 c34 0 58 10 74 22"/>
+          </g>
+          <defs>
+            <linearGradient id="rootGold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"   stop-color="#F5C451"/>
+              <stop offset="100%" stop-color="#B87B22"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </section>
+
+    <section class="pjourney" aria-labelledby="jtitle">
+      <h2 class="section__title" id="jtitle">School journey</h2>
+      <ol class="pjourney__list" id="journeyList"></ol>
+    </section>
+
+    <section class="details">
+      <h2 class="section__title">Details</h2>
+      <dl class="details__list" id="detailsList"></dl>
+    </section>
+
+    <section class="contact" id="contact" hidden>
+      <h2 class="section__title">Contact</h2>
+      <a class="btn btn--primary btn--block" id="waBtn" href="#" target="_blank" rel="noopener">
+        Message on WhatsApp
+      </a>
+    </section>
+
+    <p class="profile__foot">ROOTS · GHSS Dhalavaipettai · Batch 2006–07</p>
+  </main>
+
+  <div class="empty" id="notFound" hidden>
+    <p>That ROOT Card doesn't exist, or it's still waiting for approval.</p>
+    <a class="btn btn--ghost" href="/directory.html">Back to directory</a>
+  </div>
+
+  <nav class="dock" aria-label="Primary">
+    <a class="dock__item" href="/index.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19v-8.5Z"
+              stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <span>Home</span>
+    </a>
+    <a class="dock__item" href="/directory.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M3.5 19c.6-3.2 3-5 5.5-5s4.9 1.8 5.5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M15.6 5.2a3 3 0 0 1 0 5.6M17 14.4c2 .4 3.4 1.8 4 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span>Directory</span>
+    </a>
+    <a class="dock__item dock__item--cta" href="/onboard.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span>Join</span>
+    </a>
+    <a class="dock__item" href="/memories.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3.5" y="5" width="17" height="14" rx="3" stroke="currentColor" stroke-width="1.8"/>
+        <circle cx="9" cy="10" r="1.6" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m5 18 5-4.5 3.5 3L17 13l2 2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <span>Memories</span>
+    </a>
+    <a class="dock__item" href="/profile.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="8.5" r="3.6" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M5 19.5c.7-3.7 3.5-5.8 7-5.8s6.3 2.1 7 5.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <script src="/js/supabase.js" defer></script>
+  <script src="/js/app.js" defer></script>
+  <script src="/js/profile.js" defer></script>
+</body>
+</html>

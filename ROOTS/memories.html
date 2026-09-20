@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ta-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Memories — ROOTS</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0B1020">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="icon" type="image/svg+xml" href="/assets/logo/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+</head>
+<body class="page page--memories">
+
+  <header class="page__head">
+    <div class="page__head-row">
+      <div>
+        <h1 class="page__title">Memory Wall</h1>
+        <p class="page__meta" id="count">Loading…</p>
+      </div>
+      <button class="btn btn--primary btn--sm" type="button" data-open-sheet="upload">
+        Add
+      </button>
+    </div>
+  </header>
+
+  <main class="mem">
+    <div class="mem__grid" id="memGrid"></div>
+    <div class="empty" id="memEmpty" hidden>
+      <p>No memories yet. Add the first one.</p>
+    </div>
+    <div class="skeleton-grid" id="skeleton">
+      <div class="skeleton-card skeleton-card--mem"></div>
+      <div class="skeleton-card skeleton-card--mem"></div>
+      <div class="skeleton-card skeleton-card--mem"></div>
+    </div>
+  </main>
+
+  <nav class="dock" aria-label="Primary">
+    <a class="dock__item" href="/index.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19v-8.5Z"
+              stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <span>Home</span>
+    </a>
+    <a class="dock__item" href="/directory.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M3.5 19c.6-3.2 3-5 5.5-5s4.9 1.8 5.5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M15.6 5.2a3 3 0 0 1 0 5.6M17 14.4c2 .4 3.4 1.8 4 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span>Directory</span>
+    </a>
+    <a class="dock__item dock__item--cta" href="/onboard.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span>Join</span>
+    </a>
+    <a class="dock__item is-active" href="/memories.html" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3.5" y="5" width="17" height="14" rx="3" stroke="currentColor" stroke-width="1.8"/>
+        <circle cx="9" cy="10" r="1.6" stroke="currentColor" stroke-width="1.6"/>
+        <path d="m5 18 5-4.5 3.5 3L17 13l2 2" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      <span>Memories</span>
+    </a>
+    <a class="dock__item" href="/profile.html">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="8.5" r="3.6" stroke="currentColor" stroke-width="1.8"/>
+        <path d="M5 19.5c.7-3.7 3.5-5.8 7-5.8s6.3 2.1 7 5.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <div class="sheet-scrim" data-sheet-scrim hidden></div>
+  <aside class="sheet" id="sheet-upload" role="dialog" aria-modal="true" hidden>
+    <div class="glass sheet__panel">
+      <div class="sheet__handle" aria-hidden="true"></div>
+      <h2 class="sheet__title">Add a memory</h2>
+      <p class="sheet__sub">Old class photos, group shots, reunions. Anything worth keeping.</p>
+
+      <form class="form" id="uploadForm" novalidate>
+        <div class="photo-card photo-card--wide" data-kind="memory">
+          <div class="photo-card__frame">
+            <img class="photo-card__preview" alt="" hidden>
+            <div class="photo-card__placeholder">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3.5" y="5" width="17" height="14" rx="3"
+                      stroke="currentColor" stroke-width="1.7"/>
+                <path d="m6 17 4-4 3 3 3-2.5 2 2" stroke="currentColor"
+                      stroke-width="1.7" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="photo-card__spinner" hidden></span>
+          </div>
+          <div class="photo-card__actions">
+            <button class="btn btn--ghost btn--sm" type="button" data-pick="camera">Camera</button>
+            <button class="btn btn--ghost btn--sm" type="button" data-pick="gallery">Gallery</button>
+          </div>
+          <input type="file" accept="image/*" capture="environment" hidden data-input="camera">
+          <input type="file" accept="image/*" hidden data-input="gallery">
+        </div>
+
+        <label class="field">
+          <span class="field__label">Caption</span>
+          <input class="field__input field__input--plain" type="text" name="caption"
+                 placeholder="Where was this? Who's in it?" maxlength="180">
+        </label>
+
+        <span class="field__error" id="memError" hidden></span>
+
+        <button class="btn btn--primary btn--block" type="submit" id="memSubmit">
+          Send for approval
+        </button>
+      </form>
+    </div>
+  </aside>
+
+  <script src="/js/supabase.js" defer></script>
+  <script src="/js/app.js" defer></script>
+  <script src="/js/memories.js" defer></script>
+</body>
+</html>

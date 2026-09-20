@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ta-IN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Join ROOTS — Batch 2006–07</title>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#0B1020">
+  <meta name="color-scheme" content="dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="icon" type="image/svg+xml" href="/assets/logo/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Anek+Tamil:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+</head>
+<body class="page page--onboard">
+
+  <header class="onboard__head">
+    <a class="onboard__back" href="/index.html" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 5 8 12l7 7" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <div class="onboard__progress" role="progressbar"
+         aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" id="progressBar">
+      <span class="onboard__progress-fill" id="progressFill"></span>
+    </div>
+    <span class="onboard__step-label" id="stepLabel">Step 1 of 3</span>
+  </header>
+
+  <main class="onboard">
+
+    <section class="step is-active" data-step="1" aria-labelledby="s1title">
+      <h1 class="step__title" id="s1title">Tell us who you are</h1>
+      <p class="step__sub">This is what your classmates will see.</p>
+
+      <form class="form" id="form1" novalidate autocomplete="on">
+        <label class="field">
+          <span class="field__label">First name *</span>
+          <input class="field__input field__input--plain" type="text" name="first_name" required
+                 placeholder="Enter your first name" autocomplete="given-name">
+          <span class="field__error" data-error-for="first_name" hidden></span>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Second name</span>
+          <input class="field__input field__input--plain" type="text" name="second_name"
+                 placeholder="Enter your second name" autocomplete="family-name">
+        </label>
+
+        <label class="field">
+          <span class="field__label">Nickname</span>
+          <input class="field__input field__input--plain" type="text" name="nickname"
+                 placeholder="What we called you back then">
+        </label>
+
+        <label class="field">
+          <span class="field__label">Gender</span>
+          <select class="field__input" name="gender">
+            <option value="">Select gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </label>
+
+        <fieldset class="field field--birthday">
+          <legend class="field__label">Birthday (day &amp; month)</legend>
+          <div class="field__row">
+            <select class="field__input" name="birth_day" aria-label="Birth day">
+              <option value="">Day</option>
+            </select>
+            <select class="field__input" name="birth_month" aria-label="Birth month">
+              <option value="">Month</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <label class="field">
+          <span class="field__label">Profession</span>
+          <input class="field__input field__input--plain" type="text" name="profession"
+                 placeholder="Enter your profession">
+        </label>
+
+        <label class="field">
+          <span class="field__label">Company / Organisation</span>
+          <input class="field__input field__input--plain" type="text" name="company"
+                 placeholder="Where you work">
+        </label>
+
+        <label class="field">
+          <span class="field__label">Current location</span>
+          <input class="field__input field__input--plain" type="text" name="location"
+                 placeholder="City you live in now">
+        </label>
+
+        <label class="field">
+          <span class="field__label">WhatsApp number *</span>
+          <div class="field__phone">
+            <span class="field__prefix">+91</span>
+            <input class="field__input" type="tel" name="whatsapp" required
+                   inputmode="numeric" maxlength="10" pattern="[0-9]{10}"
+                   placeholder="10-digit number">
+          </div>
+          <span class="field__error" data-error-for="whatsapp" hidden></span>
+        </label>
+
+        <label class="toggle">
+          <input type="checkbox" name="phone_visible">
+          <span class="toggle__track" aria-hidden="true"><span class="toggle__knob"></span></span>
+          <span class="toggle__text">
+            Show my number on my profile
+            <em>Off by default. Only batch members can see it.</em>
+          </span>
+        </label>
+      </form>
+    </section>
+
+    <section class="step" data-step="2" aria-labelledby="s2title" hidden>
+      <h1 class="step__title" id="s2title">Your years at school</h1>
+      <p class="step__sub">Class 6 to Class 12. Tap a year to fill it in.</p>
+
+      <ol class="timeline" id="timeline"></ol>
+
+      <p class="timeline__hint" id="timelineHint">
+        Select a section for Classes 6–10, and a group for 11–12.
+      </p>
+    </section>
+
+    <section class="step" data-step="3" aria-labelledby="s3title" hidden>
+      <h1 class="step__title" id="s3title">Then &amp; Now</h1>
+      <p class="step__sub">Two photos. One from school, one from today.</p>
+
+      <div class="photos">
+        <article class="photo-card" data-kind="school">
+          <div class="photo-card__frame">
+            <img class="photo-card__preview" alt="" hidden>
+            <div class="photo-card__placeholder">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3.5" y="5" width="17" height="14" rx="3"
+                      stroke="currentColor" stroke-width="1.7"/>
+                <circle cx="12" cy="12" r="3.4"
+                        stroke="currentColor" stroke-width="1.7"/>
+              </svg>
+            </div>
+            <span class="photo-card__spinner" hidden></span>
+          </div>
+          <h3 class="photo-card__title">School-time photo</h3>
+          <p class="photo-card__hint">From your school days</p>
+          <div class="photo-card__actions">
+            <button class="btn btn--ghost btn--sm" type="button" data-pick="camera">
+              Camera
+            </button>
+            <button class="btn btn--ghost btn--sm" type="button" data-pick="gallery">
+              Gallery
+            </button>
+          </div>
+          <input type="file" accept="image/*" capture="environment" hidden data-input="camera">
+          <input type="file" accept="image/*" hidden data-input="gallery">
+          <span class="field__error" data-error-for="school_photo" hidden></span>
+        </article>
+
+        <article class="photo-card" data-kind="current">
+          <div class="photo-card__frame">
+            <img class="photo-card__preview" alt="" hidden>
+            <div class="photo-card__placeholder">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="9" r="3.6" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M5 19.5c.7-3.7 3.5-5.8 7-5.8s6.3 2.1 7 5.8"
+                      stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="photo-card__spinner" hidden></span>
+          </div>
+          <h3 class="photo-card__title">Current photo</h3>
+          <p class="photo-card__hint">You today, or with family</p>
+          <div class="photo-card__actions">
+            <button class="btn btn--ghost btn--sm" type="button" data-pick="camera">
+              Camera
+            </button>
+            <button class="btn btn--ghost btn--sm" type="button" data-pick="gallery">
+              Gallery
+            </button>
+          </div>
+          <input type="file" accept="image/*" capture="user" hidden data-input="camera">
+          <input type="file" accept="image/*" hidden data-input="gallery">
+          <span class="field__error" data-error-for="current_photo" hidden></span>
+        </article>
+      </div>
+    </section>
+
+    <section class="step step--done" data-step="done" aria-labelledby="donetitle" hidden>
+      <div class="done__badge">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="m5 12.5 4.5 4.5L19 7.5" stroke="currentColor"
+                stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h1 class="step__title" id="donetitle">You're in the queue</h1>
+      <p class="step__sub">
+        Your ROOT Card is waiting for approval. Once an admin reviews it,
+        you'll appear in the directory with everyone else.
+      </p>
+      <a class="btn btn--primary btn--block" href="/directory.html">
+        Browse the directory
+      </a>
+      <a class="btn btn--ghost btn--block" href="/index.html">
+        Back to home
+      </a>
+    </section>
+
+  </main>
+
+  <footer class="onboard__footer" id="footer">
+    <button class="btn btn--ghost" type="button" id="btnBack" hidden>Back</button>
+    <button class="btn btn--primary btn--block" type="button" id="btnNext">
+      Continue
+    </button>
+  </footer>
+
+  <script src="/js/supabase.js" defer></script>
+  <script src="/js/app.js" defer></script>
+  <script src="/js/onboard.js" defer></script>
+</body>
+</html>

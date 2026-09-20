@@ -1,0 +1,23 @@
+{
+  "name": "ROOTS — GHSS Dhalavaipettai, Batch 2006–07",
+  "short_name": "ROOTS",
+  "description": "Same Roots. Forever Connected. The digital batch book for SSLC Batch 2006–07, Government Higher Secondary School, Dhalavaipettai.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0B1020",
+  "theme_color": "#0B1020",
+  "lang": "ta-IN",
+  "categories": ["social", "lifestyle"],
+  "icons": [
+    { "src": "/assets/logo/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/logo/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/logo/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/assets/logo/logo.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "shortcuts": [
+    { "name": "Directory", "short_name": "Directory", "url": "/directory.html" },
+    { "name": "Join ROOTS", "short_name": "Join", "url": "/onboard.html" }
+  ]
+}
